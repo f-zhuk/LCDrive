@@ -13,20 +13,51 @@ ecc_radius=1
 pin_radius=1
 sectors=18
 
-def slot_line(svgdwg, x_start, y_start, length):
-    #dy= (y_end-y_start)/(x_end-x_start)
-    points=[(x_start, y_start+pin_radius)]
+def slot_line(svgdwg, x_center, y_center, length):
+    #dy= (y_end-y_center)/(x_end-x_center)
+    points=[(x_center-length/2, y_center+pin_radius)]
     for i in range(sectors+1, 3*sectors, 1):
-        points.append((x_start+cos(i/2/sectors*pi)*pin_radius, y_start+sin(i/2/sectors*pi)*pin_radius))
+        points.append((x_center-length/2+cos(i/2/sectors*pi)*pin_radius, y_center+sin(i/2/sectors*pi)*pin_radius))
     
     for i in range(-sectors, sectors, 1):
-        points.append((x_start+length+cos(i/2/sectors*pi)*pin_radius, y_start+sin(i/2/sectors*pi)*pin_radius))
+        points.append((x_center+length/2+cos(i/2/sectors*pi)*pin_radius, y_center+sin(i/2/sectors*pi)*pin_radius))
 
-    #point = (x_start, y_start)
+    #point = (x_center, y_center)
     #points = [point]
     #point = (x_end, y_end)
     #points.append(point)
     #svgdwg.polyline(points, stroke='black', stroke_width=0.1, fill='none')
+    return svgdwg.polygon(points, stroke='black', stroke_width=0.1, fill='none')
+
+def slot_cycl(svgdwg, x_center, y_center):
+    #center cap
+    points=[(x_center-pin_radius, y_center-pin_radius)]
+    for i in range(2*sectors+1, 4*sectors, 1):
+        points.append((x_center+cos(i/2/sectors*pi)*pin_radius, y_center-ecc_radius+sin(i/2/sectors*pi)*pin_radius))
+    #inner right
+    inner_ecc_radius=1-pin_radius/pi
+    for i in range(1, 4*sectors, 1):
+        points.append((x_center+pin_radius+inner_ecc_radius*(i/2/sectors*pi-sin(i/2/sectors*pi)), y_center-ecc_radius+(ecc_radius-pin_radius/2)*(1-cos(i/2/sectors*pi))))
+    #right cap
+    for i in range(2*sectors+1, 4*sectors, 1):
+        points.append((x_center+ecc_radius*2*pi+cos(i/2/sectors*pi)*pin_radius, y_center-ecc_radius+sin(i/2/sectors*pi)*pin_radius))
+    #outer right
+    outer_ecc_radius=1+pin_radius/pi
+    intersection=8
+    for i in range(4*sectors-1, 0, -1):
+        if x_center-pin_radius+outer_ecc_radius*(i/2/sectors*pi-sin(i/2/sectors*pi)) > x_center :
+            intersection=i
+            points.append((x_center-pin_radius+outer_ecc_radius*(i/2/sectors*pi-sin(i/2/sectors*pi)), y_center-ecc_radius+(ecc_radius+pin_radius/2)*(1-cos(i/2/sectors*pi))))
+    #outer left   
+    for i in range(intersection, 4*sectors-1, 1):
+        points.append((x_center+pin_radius-outer_ecc_radius*(i/2/sectors*pi-sin(i/2/sectors*pi)), y_center-ecc_radius+(ecc_radius+pin_radius/2)*(1-cos(i/2/sectors*pi))))
+    #left cap
+    for i in range(2*sectors+1, 4*sectors, 1):
+        points.append((x_center-ecc_radius*2*pi+cos(i/2/sectors*pi)*pin_radius, y_center-ecc_radius+sin(i/2/sectors*pi)*pin_radius))        
+    #inner left
+    for i in range(4*sectors-1, 0, -1):
+        points.append((x_center-pin_radius-inner_ecc_radius*(i/2/sectors*pi-sin(i/2/sectors*pi)), y_center-ecc_radius+(ecc_radius-pin_radius/2)*(1-cos(i/2/sectors*pi))))
+
     return svgdwg.polygon(points, stroke='black', stroke_width=0.1, fill='none')
 
 #
@@ -41,10 +72,10 @@ right_axle=dwg.circle(center=(length_total-axle_border, height_total/2), r=2.5, 
 dwg.add(outline)
 dwg.add(left_axle)
 dwg.add(right_axle)
-dwg.add(slot_line(dwg, (length_total-travel)/2-10, height_total/2-10, travel))
-dwg.add(slot_line(dwg, (length_total-travel)/2+10, height_total/2-10, travel))
-dwg.add(slot_line(dwg, (length_total-travel)/2-10, height_total/2+10, travel))
-dwg.add(slot_line(dwg, (length_total-travel)/2+10, height_total/2+10, travel))
+dwg.add(slot_line(dwg, length_total/2-10, height_total/2-10, travel))
+dwg.add(slot_line(dwg, length_total/2+10, height_total/2-10, travel))
+dwg.add(slot_line(dwg, length_total/2-10, height_total/2+10, travel))
+dwg.add(slot_line(dwg, length_total/2+10, height_total/2+10, travel))
 dwg.save()
 #Slot
 dwg = svgwrite.Drawing('/home/fedorzhuk/Documents/GitHub/LCDrive/Software/slot.svg', size=('100mm', '30mm'), viewBox=('0 0 100 30'), profile='tiny')
@@ -55,6 +86,10 @@ right_axle=dwg.circle(center=(length_total-axle_border-ecc_radius, height_total/
 dwg.add(outline)
 dwg.add(left_axle)
 dwg.add(right_axle)
+dwg.add(slot_cycl(dwg, length_total/2-10-ecc_radius*pi/2, height_total/2-10))
+dwg.add(slot_cycl(dwg, length_total/2+10-ecc_radius*pi/2, height_total/2-10))
+dwg.add(slot_cycl(dwg, length_total/2-10-ecc_radius*pi/2, height_total/2+10))
+dwg.add(slot_cycl(dwg, length_total/2+10-ecc_radius*pi/2, height_total/2+10))
 dwg.save()
 
 svg_image = tksvg.SvgImage( file = '/home/fedorzhuk/Documents/GitHub/LCDrive/Software/slot.svg', scaletoheight = 200 )
