@@ -11,7 +11,7 @@ travel=10
 axle_border=7
 ecc_radius=1
 pin_radius=1
-sectors=18
+sectors=16
 
 def slot_line(svgdwg, x_center, y_center, length):
     #dy= (y_end-y_center)/(x_end-x_center)
@@ -43,7 +43,7 @@ def slot_cycl(svgdwg, x_center, y_center):
         points.append((x_center+ecc_radius*2*pi+cos(i/2/sectors*pi)*pin_radius, y_center-ecc_radius+sin(i/2/sectors*pi)*pin_radius))
     #outer right
     outer_ecc_radius=1+pin_radius/pi
-    intersection=8
+    intersection=0
     for i in range(4*sectors-1, 0, -1):
         if x_center-pin_radius+outer_ecc_radius*(i/2/sectors*pi-sin(i/2/sectors*pi)) > x_center :
             intersection=i
@@ -86,10 +86,10 @@ right_axle=dwg.circle(center=(length_total-axle_border-ecc_radius, height_total/
 dwg.add(outline)
 dwg.add(left_axle)
 dwg.add(right_axle)
-dwg.add(slot_cycl(dwg, length_total/2-10-ecc_radius*pi/2, height_total/2-10))
-dwg.add(slot_cycl(dwg, length_total/2+10-ecc_radius*pi/2, height_total/2-10))
-dwg.add(slot_cycl(dwg, length_total/2-10-ecc_radius*pi/2, height_total/2+10))
-dwg.add(slot_cycl(dwg, length_total/2+10-ecc_radius*pi/2, height_total/2+10))
+dwg.add(slot_cycl(dwg, length_total/2-ecc_radius-10-ecc_radius*2*pi/4, height_total/2-10))
+dwg.add(slot_cycl(dwg, length_total/2-ecc_radius+10-ecc_radius*2*pi/4, height_total/2-10))
+dwg.add(slot_cycl(dwg, length_total/2-ecc_radius-10-ecc_radius*2*pi/4, height_total/2+10))
+dwg.add(slot_cycl(dwg, length_total/2-ecc_radius+10-ecc_radius*2*pi/4, height_total/2+10))
 dwg.save()
 
 svg_image = tksvg.SvgImage( file = '/home/fedorzhuk/Documents/GitHub/LCDrive/Software/slot.svg', scaletoheight = 200 )
