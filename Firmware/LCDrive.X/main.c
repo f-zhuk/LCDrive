@@ -61,6 +61,14 @@ void main(void)
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
     
+    SrcVarName0[0] = 0x0A;
+    SrcVarName0[1] = 0x06;
+    SrcVarName0[2] = 0x05;
+    SrcVarName0[3] = 0x09;
+    SrcVarName0[4] = 0x0A;
+    SrcVarName0[5] = 0x06;
+    SrcVarName0[6] = 0x05;
+    SrcVarName0[7] = 0x09;
     DMA1DSA= (volatile unsigned short)&PORTC; //DMA1 destination address
 
     while (1)

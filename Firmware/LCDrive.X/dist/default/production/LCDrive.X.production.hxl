@@ -10,11 +10,11 @@
 ### Memory Usage ###
  Intel Hex-file ranges:
   0h - 3h		(dist/default/production\LCDrive.X.production.hex)
-  FEB4h - FFFFh		(dist/default/production\LCDrive.X.production.hex)
+  FE94h - FFFFh		(dist/default/production\LCDrive.X.production.hex)
   200000h - 20000Fh		(dist/default/production\LCDrive.X.production.hex)
   300000h - 300009h		(dist/default/production\LCDrive.X.production.hex)
  Unused ranges:
-  4h - FEB3h
+  4h - FE93h
   10000h - 1FFFFFh
   200010h - 2FFFFFh
 
@@ -27,7 +27,9 @@
 ----------------------------------------------------------
 00000000 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
-0000FEB0 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000FE90 | -- -- -- -- H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000FEA0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+0000FEB0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000FEC0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000FED0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 0000FEE0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

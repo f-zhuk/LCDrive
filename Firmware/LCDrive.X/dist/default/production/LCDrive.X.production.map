@@ -6,9 +6,9 @@ Linker command line:
   --edf=C:\Program Files\Microchip\xc8\v2.40\pic\dat\20220703182018_en.msgs \
   -cn -h+dist/default/production\LCDrive.X.production.sym \
   --cmf=dist/default/production\LCDrive.X.production.cmf -z -Q18F26K83 \
-  -oC:\Users\Fedor\AppData\Local\Temp\xcAs9d4.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\Fedor\AppData\Local\Temp\xcAs5l0.4 --defsym=__MPLAB_BUILD=1 \
   --fixupoverflow=error -Mdist/default/production/LCDrive.X.production.map \
-  --md=C:\Users\Fedor\AppData\Local\Temp\xcAs9d4.dat -E1 -ver=XC8 Compiler \
+  --md=C:\Users\Fedor\AppData\Local\Temp\xcAs5l0.dat -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ACODE=00h-0FFFFh -ACONST=00h-0FFFFh \
   -ASMALLCONST=01000h-010FFhx240 -AMEDIUMCONST=01000h-0FFFFh \
   -ACOMRAM=01h-05Fh -AABS1=00h-0FFFh -ABIGRAM=01h-0FFFh \
@@ -27,7 +27,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  C:\Users\Fedor\AppData\Local\Temp\xcAs9d4.o \
+  C:\Users\Fedor\AppData\Local\Temp\xcAs5l0.o \
   dist/default/production\LCDrive.X.production.o 
 
 Object code version is 3.11
@@ -37,7 +37,7 @@ Machine type is 18F26K83
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\Fedor\AppData\Local\Temp\xcAs9d4.o
+C:\Users\Fedor\AppData\Local\Temp\xcAs5l0.o
                 idloc                            200000   200000       10        0       5
                 config                           300000   300000        A        0       4
                 init                               FFFC     FFFC        4     7FFE       0
@@ -46,29 +46,29 @@ dist/default/production\LCDrive.X.production.o
                 idloc                            200000   200000       10        0       5
                 config                           300000   300000        A        0       4
                 text7                              FF64     FF64       4C     7FB2       0
-                text6                              FF3E     FF3E       26     7F9F       0
+                text6                              FF08     FF08       26     7F84       0
                 text5                              FFB0     FFB0       4C     7FD8       0
-                text4                              FF1A     FF1A       24     7F8D       0
-                text3                              FEB4     FEB4        E     7F5A       0
-                text2                              FED4     FED4       16     7F6A       0
-                text1                              FF00     FF00       1A     7F80       0
-                text0                              FEEA     FEEA       16     7F75       0
+                text4                              FEE4     FEE4       24     7F72       0
+                text3                              FE94     FE94        E     7F4A       0
+                text2                              FEB4     FEB4       16     7F5A       0
+                text1                              FECA     FECA       1A     7F65       0
+                text0                              FF2E     FF2E       36     7F97       0
                 bssCOMRAM                             1        1        9        1       1
-                cinit                              FEC2     FEC2       12     7F61       0
+                cinit                              FEA2     FEA2       12     7F51       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
                 init                               FFFC     FFFC        4         0
                 reset_vec                             0        0        4         0
                 text7                              FF64     FF64       4C         0
-                text6                              FF3E     FF3E       26         0
+                text6                              FF08     FF08       26         0
                 text5                              FFB0     FFB0       4C         0
-                text4                              FF1A     FF1A       24         0
-                text3                              FEB4     FEB4        E         0
-                text2                              FED4     FED4       16         0
-                text1                              FF00     FF00       1A         0
-                text0                              FEEA     FEEA       16         0
-                cinit                              FEC2     FEC2       12         0
+                text4                              FEE4     FEE4       24         0
+                text3                              FE94     FE94        E         0
+                text2                              FEB4     FEB4       16         0
+                text1                              FECA     FECA       1A         0
+                text0                              FF2E     FF2E       36         0
+                cinit                              FEA2     FEA2       12         0
 
         CLASS   CONST          
 
@@ -141,13 +141,13 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
 
                 reset_vec                      000000  000004  000004         0       0  CODE    
                 bssCOMRAM                      000001  000009  00000A         1       1  COMRAM  
-                text3                          00FEB4  00000E  00FEC2      7F5A       0  CODE    
-                cinit                          00FEC2  000012  00FED4      7F61       0  CODE    
-                text2                          00FED4  000016  00FEEA      7F6A       0  CODE    
-                text0                          00FEEA  000016  00FF00      7F75       0  CODE    
-                text1                          00FF00  00001A  00FF1A      7F80       0  CODE    
-                text4                          00FF1A  000024  00FF3E      7F8D       0  CODE    
-                text6                          00FF3E  000026  00FF64      7F9F       0  CODE    
+                text3                          00FE94  00000E  00FEA2      7F4A       0  CODE    
+                cinit                          00FEA2  000012  00FEB4      7F51       0  CODE    
+                text2                          00FEB4  000016  00FECA      7F5A       0  CODE    
+                text1                          00FECA  00001A  00FEE4      7F65       0  CODE    
+                text4                          00FEE4  000024  00FF08      7F72       0  CODE    
+                text6                          00FF08  000026  00FF2E      7F84       0  CODE    
+                text0                          00FF2E  000036  00FF64      7F97       0  CODE    
                 text7                          00FF64  00004C  00FFB0      7FB2       0  CODE    
                 text5                          00FFB0  00004C  00FFFC      7FD8       0  CODE    
                 init                           00FFFC  000004  010000      7FFE       0  CODE    
@@ -174,14 +174,14 @@ UNUSED ADDRESS RANGES
         BANK9            000900-0009FF              100
         BIGRAM           00000A-000FFF              FF6
         BIGSFR           003700-003FFF              900
-        CODE             000004-00FEB3             FEB0
+        CODE             000004-00FE93             FE90
         COMRAM           00000A-00005F               56
-        CONST            000004-00FEB3             FEB0
+        CONST            000004-00FE93             FE90
         EEDATA           310000-3103FF              400
-        MEDIUMCONST      001000-00FEB3             EEB4
+        MEDIUMCONST      001000-00FE93             EE94
         RAM              000060-000FFF              100
         SFR              003700-003FFF              100
-        SMALLCONST       001000-00FEB3              100
+        SMALLCONST       001000-00FE93              100
 
                                   Symbol Table
 
@@ -217,7 +217,7 @@ _OSCCON1                          (abs)        0039D9
 _OSCCON3                          (abs)        0039DB
 _OSCEN                            (abs)        0039DD
 _OSCFRQ                           (abs)        0039DF
-_OSCILLATOR_Initialize            text6        00FF3E
+_OSCILLATOR_Initialize            text6        00FF08
 _OSCTUNE                          (abs)        0039DE
 _PIE2bits                         (abs)        003992
 _PIN_MANAGER_Initialize           text5        00FFB0
@@ -232,22 +232,22 @@ _PMD4                             (abs)        0039C4
 _PMD5                             (abs)        0039C5
 _PMD6                             (abs)        0039C6
 _PMD7                             (abs)        0039C7
-_PMD_Initialize                   text4        00FF1A
+_PMD_Initialize                   text4        00FEE4
 _PORTC                            (abs)        003FCC
 _PRLOCK                           (abs)        0039EF
 _PRLOCKbits                       (abs)        0039EF
 _SLRCONA                          (abs)        003A43
 _SLRCONB                          (abs)        003A53
 _SLRCONC                          (abs)        003A63
-_SYSTEM_Initialize                text1        00FF00
+_SYSTEM_Initialize                text1        00FECA
 _SrcVarName0                      bssCOMRAM    000001
-_SystemArbiter_Initialize         text3        00FEB4
+_SystemArbiter_Initialize         text3        00FE94
 _T0CON0                           (abs)        003FB8
 _T0CON0bits                       (abs)        003FB8
 _T0CON1                           (abs)        003FB9
 _TMR0H                            (abs)        003FB7
 _TMR0L                            (abs)        003FB6
-_TMR0_Initialize                  text2        00FED4
+_TMR0_Initialize                  text2        00FEB4
 _TRISA                            (abs)        003FC2
 _TRISB                            (abs)        003FC3
 _TRISC                            (abs)        003FC4
@@ -415,31 +415,31 @@ ___sp                             stack        000000
 __accesstop                       (abs)        000060
 __activetblptr                    (abs)        000000
 __end_of_DMA1_Initialize          text7        00FFB0
-__end_of_OSCILLATOR_Initialize    text6        00FF64
+__end_of_OSCILLATOR_Initialize    text6        00FF2E
 __end_of_PIN_MANAGER_Initialize   text5        00FFFC
-__end_of_PMD_Initialize           text4        00FF3E
-__end_of_SYSTEM_Initialize        text1        00FF1A
-__end_of_SystemArbiter_Initialize text3        00FEC2
-__end_of_TMR0_Initialize          text2        00FEEA
-__end_of__initialization          cinit        00FECE
-__end_of_main                     text0        00FF00
-__initialization                  cinit        00FEC2
+__end_of_PMD_Initialize           text4        00FF08
+__end_of_SYSTEM_Initialize        text1        00FEE4
+__end_of_SystemArbiter_Initialize text3        00FEA2
+__end_of_TMR0_Initialize          text2        00FECA
+__end_of__initialization          cinit        00FEAE
+__end_of_main                     text0        00FF64
+__initialization                  cinit        00FEA2
 __mediumconst                     mediumconst  000000
 __pbssCOMRAM                      bssCOMRAM    000001
-__pcinit                          cinit        00FEC2
+__pcinit                          cinit        00FEA2
 __pcstackCOMRAM                   cstackCOMRAM 000000
-__ptext0                          text0        00FEEA
-__ptext1                          text1        00FF00
-__ptext2                          text2        00FED4
-__ptext3                          text3        00FEB4
-__ptext4                          text4        00FF1A
+__ptext0                          text0        00FF2E
+__ptext1                          text1        00FECA
+__ptext2                          text2        00FEB4
+__ptext3                          text3        00FE94
+__ptext4                          text4        00FEE4
 __ptext5                          text5        00FFB0
-__ptext6                          text6        00FF3E
+__ptext6                          text6        00FF08
 __ptext7                          text7        00FF64
 __ramtop                          ramtop       001000
 __smallconst                      smallconst   000000
-_main                             text0        00FEEA
-end_of_initialization             cinit        00FECE
+_main                             text0        00FF2E
+end_of_initialization             cinit        00FEAE
 intlevel0                         text         000000
 intlevel1                         text         000000
 intlevel2                         text         000000
@@ -449,14 +449,14 @@ isa$xinst                         (abs)        000000
 stackhi                           (abs)        000000
 stacklo                           (abs)        000000
 start                             init         00FFFC
-start_initialization              cinit        00FEC2
+start_initialization              cinit        00FEA2
 
 
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 mcc_generated_files/tmr0.c
-		_TMR0_Initialize		CODE           	FED4	0000	22
+		_TMR0_Initialize		CODE           	FEB4	0000	22
 
 mcc_generated_files/tmr0.c estimated size: 22
 
@@ -471,20 +471,20 @@ mcc_generated_files/dma1.c
 mcc_generated_files/dma1.c estimated size: 76
 
 shared
-		__initialization		CODE           	FEC2	0000	12
+		__initialization		CODE           	FEA2	0000	12
 
 shared estimated size: 12
 
 mcc_generated_files/mcc.c
-		_SystemArbiter_Initialize		CODE           	FEB4	0000	14
-		_PMD_Initialize		CODE           	FF1A	0000	36
-		_OSCILLATOR_Initialize		CODE           	FF3E	0000	38
-		_SYSTEM_Initialize		CODE           	FF00	0000	26
+		_SystemArbiter_Initialize		CODE           	FE94	0000	14
+		_PMD_Initialize		CODE           	FEE4	0000	36
+		_OSCILLATOR_Initialize		CODE           	FF08	0000	38
+		_SYSTEM_Initialize		CODE           	FECA	0000	26
 
 mcc_generated_files/mcc.c estimated size: 114
 
 main.c
-		_main          		CODE           	FEEA	0000	22
+		_main          		CODE           	FF2E	0000	54
 
-main.c estimated size: 22
+main.c estimated size: 54
 
