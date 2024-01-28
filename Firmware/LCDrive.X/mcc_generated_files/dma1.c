@@ -66,8 +66,8 @@ void DMA1_Initialize(void)
     DMA1CON1 = 0x02;
     //Source Message Size : 8
     DMA1SSZ = 8;
-    //Destination Message Size : 2
-    DMA1DSZ = 2;
+    //Destination Message Size : 1
+    DMA1DSZ = 1;
     //Start Trigger : SIRQ TMR0; 
     DMA1SIRQ = 0x1F;
     //Abort Trigger : AIRQ None; 

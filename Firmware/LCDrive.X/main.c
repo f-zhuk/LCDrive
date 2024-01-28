@@ -43,6 +43,23 @@
 
 #include "mcc_generated_files/mcc.h"
 
+void TMR0_stepISR()
+{
+    static uint16_t step = 0;
+    step ++;
+    if(step == 3500) 
+    {
+        DMA1CON1 = (DMA1CON1&~0x06)|0x04;
+        DMA1SSA = (&SrcVarName0)+8;
+    }
+    if(step > 7000) 
+    {
+        step = 0;
+        DMA1CON1 = (DMA1CON1&~0x06)|0x02;
+        DMA1SSA = &SrcVarName0;
+    }
+}
+
 /*
                          Main application
  */
@@ -50,26 +67,42 @@ void main(void)
 {
     // Initialize the device
     SYSTEM_Initialize();
+    
+    TMR0_SetInterruptHandler (TMR0_stepISR);
+    
+    SrcVarName0[0] = 0x09;
+    SrcVarName0[1] = 0x0C;
+    SrcVarName0[2] = 0x06;
+    SrcVarName0[3] = 0x03;
+    SrcVarName0[4] = 0x09;
+    SrcVarName0[5] = 0x0C;
+    SrcVarName0[6] = 0x06;
+    SrcVarName0[7] = 0x03;
+    //SrcVarName0[0] = 0x09;
+    //SrcVarName0[1] = 0x05;
+    //SrcVarName0[2] = 0x06;
+    //SrcVarName0[3] = 0x0A;
+    //SrcVarName0[4] = 0x09;
+    //SrcVarName0[5] = 0x05;
+    //SrcVarName0[6] = 0x06;
+    //SrcVarName0[7] = 0x0A;
+    DMA1DSA= (volatile unsigned short)&PORTC; //DMA1 destination address
 
     // If using interrupts in PIC18 High/Low Priority Mode you need to enable the Global High and Low Interrupts
     // If using interrupts in PIC Mid-Range Compatibility Mode you need to enable the Global Interrupts
     // Use the following macros to:
-
-    // Enable the Global Interrupts
-    //INTERRUPT_GlobalInterruptEnable();
-
-    // Disable the Global Interrupts
-    //INTERRUPT_GlobalInterruptDisable();
     
-    SrcVarName0[0] = 0x0A;
-    SrcVarName0[1] = 0x06;
-    SrcVarName0[2] = 0x05;
-    SrcVarName0[3] = 0x09;
-    SrcVarName0[4] = 0x0A;
-    SrcVarName0[5] = 0x06;
-    SrcVarName0[6] = 0x05;
-    SrcVarName0[7] = 0x09;
-    DMA1DSA= (volatile unsigned short)&PORTC; //DMA1 destination address
+    // Enable high priority global interrupts.
+    INTERRUPT_GlobalInterruptHighEnable();
+
+    // Enable low priority global interrupts.
+    INTERRUPT_GlobalInterruptLowEnable();
+    
+    // Disable high priority global interrupts
+    //INTERRUPT_GlobalInterruptHighDisable();
+
+    // Disable low priority global interrupts.
+    //INTERRUPT_GlobalInterruptLowDisable();
 
     while (1)
     {

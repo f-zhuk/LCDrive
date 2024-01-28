@@ -3153,8 +3153,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;mcc_generated_files/dma1.c: 68:     DMA1SSZ = 8;
 [e = _DMA1SSZ -> -> 8 `i `us ]
 "70
-[; ;mcc_generated_files/dma1.c: 70:     DMA1DSZ = 2;
-[e = _DMA1DSZ -> -> 2 `i `us ]
+[; ;mcc_generated_files/dma1.c: 70:     DMA1DSZ = 1;
+[e = _DMA1DSZ -> -> 1 `i `us ]
 "72
 [; ;mcc_generated_files/dma1.c: 72:     DMA1SIRQ = 0x1F;
 [e = _DMA1SIRQ -> -> 31 `i `uc ]

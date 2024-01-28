@@ -36408,8 +36408,6 @@ unsigned char __t3rd16on(void);
 # 54 "mcc_generated_files/pin_manager.h" 2
 # 158 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 170 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_IOC(void);
 # 49 "mcc_generated_files/pin_manager.c" 2
 
 

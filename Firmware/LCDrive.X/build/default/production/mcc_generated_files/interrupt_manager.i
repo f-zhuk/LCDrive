@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/tmr0.c"
+# 1 "mcc_generated_files/interrupt_manager.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,8 +6,15 @@
 # 1 "<built-in>" 2
 # 1 "C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/tmr0.c" 2
-# 51 "mcc_generated_files/tmr0.c"
+# 1 "mcc_generated_files/interrupt_manager.c" 2
+# 49 "mcc_generated_files/interrupt_manager.c"
+# 1 "mcc_generated_files/interrupt_manager.h" 1
+# 109 "mcc_generated_files/interrupt_manager.h"
+void INTERRUPT_Initialize (void);
+# 49 "mcc_generated_files/interrupt_manager.c" 2
+
+# 1 "mcc_generated_files/mcc.h" 1
+# 49 "mcc_generated_files/mcc.h"
 # 1 "C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\\pic\\include\\xc.h" 1 3
 # 18 "C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -36403,12 +36410,281 @@ __attribute__((__unsupported__("The READTIMER" "3" "() macro is not available wi
 unsigned char __t1rd16on(void);
 unsigned char __t3rd16on(void);
 # 34 "C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\\pic\\include\\xc.h" 2 3
-# 51 "mcc_generated_files/tmr0.c" 2
+# 49 "mcc_generated_files/mcc.h" 2
+
+# 1 "mcc_generated_files/device_config.h" 1
+# 50 "mcc_generated_files/mcc.h" 2
+
+# 1 "mcc_generated_files/pin_manager.h" 1
+# 158 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
+# 51 "mcc_generated_files/mcc.h" 2
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdbool.h" 1 3
+# 53 "mcc_generated_files/mcc.h" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\conio.h" 1 3
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 1 3
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 1 3
+
+
+
+
+
+typedef void * va_list[1];
+
+
+
+
+typedef void * __isoc_va_list[1];
+# 137 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long ssize_t;
+# 246 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef long long off_t;
+# 399 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\bits/alltypes.h" 3
+typedef struct _IO_FILE FILE;
+# 24 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 2 3
+# 52 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdio.h" 3
+typedef union _G_fpos64_t {
+ char __opaque[16];
+ double __align;
+} fpos_t;
+
+extern FILE *const stdin;
+extern FILE *const stdout;
+extern FILE *const stderr;
+
+
+
+
+
+FILE *fopen(const char *restrict, const char *restrict);
+FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
+int fclose(FILE *);
+
+int remove(const char *);
+int rename(const char *, const char *);
+
+int feof(FILE *);
+int ferror(FILE *);
+int fflush(FILE *);
+void clearerr(FILE *);
+
+int fseek(FILE *, long, int);
+long ftell(FILE *);
+void rewind(FILE *);
+
+int fgetpos(FILE *restrict, fpos_t *restrict);
+int fsetpos(FILE *, const fpos_t *);
+
+size_t fread(void *restrict, size_t, size_t, FILE *restrict);
+size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
+
+int fgetc(FILE *);
+int getc(FILE *);
+int getchar(void);
+int ungetc(int, FILE *);
+
+int fputc(int, FILE *);
+int putc(int, FILE *);
+int putchar(int);
+
+char *fgets(char *restrict, int, FILE *restrict);
+
+char *gets(char *);
+
+
+int fputs(const char *restrict, FILE *restrict);
+int puts(const char *);
+
+__attribute__((__format__(__printf__, 1, 2)))
+int printf(const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int fprintf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int sprintf(char *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 3, 4)))
+int snprintf(char *restrict, size_t, const char *restrict, ...);
+
+__attribute__((__format__(__printf__, 1, 0)))
+int vprintf(const char *restrict, __isoc_va_list);
+int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 2, 0)))
+int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 3, 0)))
+int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
+
+__attribute__((__format__(__scanf__, 1, 2)))
+int scanf(const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int fscanf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int sscanf(const char *restrict, const char *restrict, ...);
+
+__attribute__((__format__(__scanf__, 1, 0)))
+int vscanf(const char *restrict, __isoc_va_list);
+int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__scanf__, 2, 0)))
+int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
+
+void perror(const char *);
+
+int setvbuf(FILE *restrict, char *restrict, int, size_t);
+void setbuf(FILE *restrict, char *restrict);
+
+char *tmpnam(char *);
+FILE *tmpfile(void);
+
+
+
+
+FILE *fmemopen(void *restrict, size_t, const char *restrict);
+FILE *open_memstream(char **, size_t *);
+FILE *fdopen(int, const char *);
+FILE *popen(const char *, const char *);
+int pclose(FILE *);
+int fileno(FILE *);
+int fseeko(FILE *, off_t, int);
+off_t ftello(FILE *);
+int dprintf(int, const char *restrict, ...);
+int vdprintf(int, const char *restrict, __isoc_va_list);
+void flockfile(FILE *);
+int ftrylockfile(FILE *);
+void funlockfile(FILE *);
+int getc_unlocked(FILE *);
+int getchar_unlocked(void);
+int putc_unlocked(int, FILE *);
+int putchar_unlocked(int);
+ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
+ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
+int renameat(int, const char *, int, const char *);
+char *ctermid(char *);
+
+
+
+
+
+
+
+char *tempnam(const char *, const char *);
+# 7 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\conio.h" 2 3
+# 54 "mcc_generated_files/mcc.h" 2
+
+
+# 1 "mcc_generated_files/dma1.h" 1
+# 55 "mcc_generated_files/dma1.h"
+uint8_t SrcVarName0[8];
+uint8_t DstVarName0[1];
+
+
+
+
+
+
+
+void DMA1_Initialize(void);
+
+
+
+
+
+
+void DMA1_SelectSourceRegion(uint8_t region);
+
+
+
+
+
+
+void DMA1_SetSourceAddress(uint24_t address);
+
+
+
+
+
+
+void DMA1_SetDestinationAddress(uint16_t address);
+
+
+
+
+
+
+void DMA1_SetSourceSize(uint16_t size);
+
+
+
+
+
+
+void DMA1_SetDestinationSize(uint16_t size);
+
+
+
+
+
+
+uint24_t DMA1_GetSourcePointer(void);
+
+
+
+
+
+
+uint16_t DMA1_GetDestinationPointer(void);
+
+
+
+
+
+
+void DMA1_SetStartTrigger(uint8_t sirq);
+
+
+
+
+
+
+void DMA1_SetAbortTrigger(uint8_t airq);
+
+
+
+
+
+
+void DMA1_StartTransfer(void);
+
+
+
+
+
+
+void DMA1_StartTransferWithTrigger(void);
+
+
+
+
+
+
+void DMA1_StopTransfer(void);
+
+
+
+
+
+
+void DMA1_SetDMAPriority(uint8_t priority);
+# 56 "mcc_generated_files/mcc.h" 2
 
 # 1 "mcc_generated_files/tmr0.h" 1
-# 55 "mcc_generated_files/tmr0.h"
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\stdbool.h" 1 3
-# 55 "mcc_generated_files/tmr0.h" 2
 # 100 "mcc_generated_files/tmr0.h"
 void TMR0_Initialize(void);
 # 129 "mcc_generated_files/tmr0.h"
@@ -36427,99 +36703,42 @@ void TMR0_Reload(uint8_t periodVal);
 extern void (*TMR0_InterruptHandler)(void);
 # 329 "mcc_generated_files/tmr0.h"
 void TMR0_DefaultInterruptHandler(void);
-# 52 "mcc_generated_files/tmr0.c" 2
+# 57 "mcc_generated_files/mcc.h" 2
+# 72 "mcc_generated_files/mcc.h"
+void SYSTEM_Initialize(void);
+# 85 "mcc_generated_files/mcc.h"
+void OSCILLATOR_Initialize(void);
+# 98 "mcc_generated_files/mcc.h"
+void PMD_Initialize(void);
+# 110 "mcc_generated_files/mcc.h"
+void SystemArbiter_Initialize(void);
+# 50 "mcc_generated_files/interrupt_manager.c" 2
 
-# 1 "mcc_generated_files/interrupt_manager.h" 1
-# 109 "mcc_generated_files/interrupt_manager.h"
-void INTERRUPT_Initialize (void);
-# 53 "mcc_generated_files/tmr0.c" 2
 
-
-
-
-
-
-
-void (*TMR0_InterruptHandler)(void);
-
-void TMR0_Initialize(void)
+void INTERRUPT_Initialize (void)
 {
+    INTCON0bits.IPEN = 1;
+
+    _Bool state = (unsigned char)GIE;
+    GIE = 0;
+    IVTLOCK = 0x55;
+    IVTLOCK = 0xAA;
+    IVTLOCKbits.IVTLOCKED = 0x00;
+
+    IVTBASEU = 0;
+    IVTBASEH = 0;
+    IVTBASEL = 8;
+
+    IVTLOCK = 0x55;
+    IVTLOCK = 0xAA;
+    IVTLOCKbits.IVTLOCKED = 0x01;
+
+    GIE = state;
 
 
-
-    T0CON1 = 0x4F;
-
-
-    TMR0H = 0x04;
-
-
-    TMR0L = 0x00;
-
-
-    PIR3bits.TMR0IF = 0;
-
-
-    PIE3bits.TMR0IE = 1;
-
-
-    TMR0_SetInterruptHandler(TMR0_DefaultInterruptHandler);
-
-
-    T0CON0 = 0x80;
+    IPR3bits.TMR0IP = 1;
 }
 
-void TMR0_StartTimer(void)
+void __attribute__((picinterrupt(("irq(default),base(8)")))) Default_ISR()
 {
-
-    T0CON0bits.T0EN = 1;
-}
-
-void TMR0_StopTimer(void)
-{
-
-    T0CON0bits.T0EN = 0;
-}
-
-uint8_t TMR0_ReadTimer(void)
-{
-    uint8_t readVal;
-
-
-    readVal = TMR0L;
-
-    return readVal;
-}
-
-void TMR0_WriteTimer(uint8_t timerVal)
-{
-
-    TMR0L = timerVal;
- }
-
-void TMR0_Reload(uint8_t periodVal)
-{
-
-   TMR0H = periodVal;
-}
-
-void __attribute__((picinterrupt(("irq(TMR0),base(8)")))) TMR0_ISR()
-{
-
-    PIR3bits.TMR0IF = 0;
-    if(TMR0_InterruptHandler)
-    {
-        TMR0_InterruptHandler();
-    }
-
-
-}
-
-
-void TMR0_SetInterruptHandler(void (* InterruptHandler)(void)){
-    TMR0_InterruptHandler = InterruptHandler;
-}
-
-void TMR0_DefaultInterruptHandler(void){
-
-
 }

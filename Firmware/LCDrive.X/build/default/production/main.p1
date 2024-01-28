@@ -1,14 +1,36 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"37510 C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h
+[; ;C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h: 37510: extern volatile unsigned char DMA1CON1 __attribute__((address(0x3BFD)));
+[v _DMA1CON1 `Vuc ~T0 @X0 0 e@15357 ]
+"37062
+[; ;C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h: 37062: extern volatile __uint24 DMA1SSA __attribute__((address(0x3BF9)));
+[v _DMA1SSA `Vum ~T0 @X0 0 e@15353 ]
 [p mainexit ]
-"71 ./mcc_generated_files/mcc.h
-[; ;./mcc_generated_files/mcc.h: 71: void SYSTEM_Initialize(void);
+"72 ./mcc_generated_files/mcc.h
+[; ;./mcc_generated_files/mcc.h: 72: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+[v F22927 `(v ~T0 @X0 0 tf ]
+"293 ./mcc_generated_files/tmr0.h
+[; ;./mcc_generated_files/tmr0.h: 293:  void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR0_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F22927 ]
+[v F22944 `(v ~T0 @X0 0 tf ]
 "35999 C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h
 [; ;C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h: 35999: extern volatile unsigned short DMA1DSA __attribute__((address(0x3BF0)));
 [v _DMA1DSA `Vus ~T0 @X0 0 e@15344 ]
 "4839
 [; ;C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h: 4839:     };
 [v _PORTC `Vuc ~T0 @X0 0 e@16332 ]
+"4970
+[s S3094 :1 `uc 1 :1 `uc 1 :1 `uc 1 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S3094 . INT0EDG INT1EDG INT2EDG . IPEN GIEL GIE ]
+"4979
+[s S3095 :7 `uc 1 :1 `uc 1 ]
+[n S3095 . . GIEH ]
+"4969
+[u S3093 `S3094 1 `S3095 1 ]
+[n S3093 . . . ]
+"4984
+[v _INTCON0bits `VS3093 ~T0 @X0 0 e@16338 ]
 "272 C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h
 [; ;C:/Users/Fedor/.mchp_packs/Microchip/PIC18F-K_DFP/1.7.134/xc8\pic\include\proc\pic18f26k83.h: 272: __asm("CIOCON equ 03700h");
 [; <" CIOCON equ 03700h ;# ">
@@ -3039,58 +3061,123 @@ Version 4.0 HI-TECH Software Intermediate Code
 "56
 [; ;./mcc_generated_files/dma1.h: 56: uint8_t DstVarName0[1];
 [v _DstVarName0 `uc ~T0 @X0 -> -> 1 `i `ux e ]
-[v $root$_main `(v ~T0 @X0 0 e ]
-"49 main.c
-[; ;main.c: 49: void main(void)
-[v _main `(v ~T0 @X0 1 ef ]
+"46 main.c
+[; ;main.c: 46: void TMR0_stepISR()
+[v _TMR0_stepISR `(v ~T0 @X0 1 ef ]
+"47
+[; ;main.c: 47: {
+{
+[e :U _TMR0_stepISR ]
+[f ]
+"48
+[; ;main.c: 48:     static uint16_t step = 0;
+[v F22938 `us ~T0 @X0 1 s step ]
+[i F22938
+-> -> 0 `i `us
+]
+"49
+[; ;main.c: 49:     step ++;
+[e ++ F22938 -> -> 1 `i `us ]
 "50
-[; ;main.c: 50: {
+[; ;main.c: 50:     if(step == 3500)
+[e $ ! == -> F22938 `ui -> -> 3500 `i `ui 3204  ]
+"51
+[; ;main.c: 51:     {
+{
+"52
+[; ;main.c: 52:         DMA1CON1 = (DMA1CON1&~0x06)|0x04;
+[e = _DMA1CON1 -> | & -> _DMA1CON1 `i ~ -> 6 `i -> 4 `i `uc ]
+"53
+[; ;main.c: 53:         DMA1SSA = (&SrcVarName0)+8;
+[e = _DMA1SSA -> + &U _SrcVarName0 * -> -> 8 `i `x -> -> # *U &U _SrcVarName0 `i `x `um ]
+"54
+[; ;main.c: 54:     }
+}
+[e :U 3204 ]
+"55
+[; ;main.c: 55:     if(step > 7000)
+[e $ ! > -> F22938 `ui -> -> 7000 `i `ui 3205  ]
+"56
+[; ;main.c: 56:     {
+{
+"57
+[; ;main.c: 57:         step = 0;
+[e = F22938 -> -> 0 `i `us ]
+"58
+[; ;main.c: 58:         DMA1CON1 = (DMA1CON1&~0x06)|0x02;
+[e = _DMA1CON1 -> | & -> _DMA1CON1 `i ~ -> 6 `i -> 2 `i `uc ]
+"59
+[; ;main.c: 59:         DMA1SSA = &SrcVarName0;
+[e = _DMA1SSA -> &U _SrcVarName0 `um ]
+"60
+[; ;main.c: 60:     }
+}
+[e :U 3205 ]
+"61
+[; ;main.c: 61: }
+[e :UE 3203 ]
+}
+[v $root$_main `(v ~T0 @X0 0 e ]
+"66
+[; ;main.c: 66: void main(void)
+[v _main `(v ~T0 @X0 1 ef ]
+"67
+[; ;main.c: 67: {
 {
 [e :U _main ]
 [f ]
-"52
-[; ;main.c: 52:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"64
-[; ;main.c: 64:     SrcVarName0[0] = 0x0A;
-[e = *U + &U _SrcVarName0 * -> -> -> 0 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 10 `i `uc ]
-"65
-[; ;main.c: 65:     SrcVarName0[1] = 0x06;
-[e = *U + &U _SrcVarName0 * -> -> -> 1 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 6 `i `uc ]
-"66
-[; ;main.c: 66:     SrcVarName0[2] = 0x05;
-[e = *U + &U _SrcVarName0 * -> -> -> 2 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 5 `i `uc ]
-"67
-[; ;main.c: 67:     SrcVarName0[3] = 0x09;
-[e = *U + &U _SrcVarName0 * -> -> -> 3 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 9 `i `uc ]
-"68
-[; ;main.c: 68:     SrcVarName0[4] = 0x0A;
-[e = *U + &U _SrcVarName0 * -> -> -> 4 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 10 `i `uc ]
 "69
-[; ;main.c: 69:     SrcVarName0[5] = 0x06;
-[e = *U + &U _SrcVarName0 * -> -> -> 5 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 6 `i `uc ]
-"70
-[; ;main.c: 70:     SrcVarName0[6] = 0x05;
-[e = *U + &U _SrcVarName0 * -> -> -> 6 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 5 `i `uc ]
+[; ;main.c: 69:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
 "71
-[; ;main.c: 71:     SrcVarName0[7] = 0x09;
-[e = *U + &U _SrcVarName0 * -> -> -> 7 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 9 `i `uc ]
-"72
-[; ;main.c: 72:     DMA1DSA= (volatile unsigned short)&PORTC;
-[e = _DMA1DSA -> &U _PORTC `us ]
+[; ;main.c: 71:     TMR0_SetInterruptHandler (TMR0_stepISR);
+[e ( _TMR0_SetInterruptHandler (1 -> &U _TMR0_stepISR `*F22944 ]
+"73
+[; ;main.c: 73:     SrcVarName0[0] = 0x09;
+[e = *U + &U _SrcVarName0 * -> -> -> 0 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 9 `i `uc ]
 "74
-[; ;main.c: 74:     while (1)
-[e :U 3205 ]
+[; ;main.c: 74:     SrcVarName0[1] = 0x0C;
+[e = *U + &U _SrcVarName0 * -> -> -> 1 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 12 `i `uc ]
 "75
-[; ;main.c: 75:     {
-{
+[; ;main.c: 75:     SrcVarName0[2] = 0x06;
+[e = *U + &U _SrcVarName0 * -> -> -> 2 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 6 `i `uc ]
+"76
+[; ;main.c: 76:     SrcVarName0[3] = 0x03;
+[e = *U + &U _SrcVarName0 * -> -> -> 3 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 3 `i `uc ]
 "77
-[; ;main.c: 77:     }
-}
-[e :U 3204 ]
-[e $U 3205  ]
-[e :U 3206 ]
+[; ;main.c: 77:     SrcVarName0[4] = 0x09;
+[e = *U + &U _SrcVarName0 * -> -> -> 4 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 9 `i `uc ]
 "78
-[; ;main.c: 78: }
-[e :UE 3203 ]
+[; ;main.c: 78:     SrcVarName0[5] = 0x0C;
+[e = *U + &U _SrcVarName0 * -> -> -> 5 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 12 `i `uc ]
+"79
+[; ;main.c: 79:     SrcVarName0[6] = 0x06;
+[e = *U + &U _SrcVarName0 * -> -> -> 6 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 6 `i `uc ]
+"80
+[; ;main.c: 80:     SrcVarName0[7] = 0x03;
+[e = *U + &U _SrcVarName0 * -> -> -> 7 `i `ui `ux -> -> # *U &U _SrcVarName0 `ui `ux -> -> 3 `i `uc ]
+"89
+[; ;main.c: 89:     DMA1DSA= (volatile unsigned short)&PORTC;
+[e = _DMA1DSA -> &U _PORTC `us ]
+"96
+[; ;main.c: 96:     (INTCON0bits.GIEH = 1);
+[e = . . _INTCON0bits 1 1 -> -> 1 `i `uc ]
+"99
+[; ;main.c: 99:     (INTCON0bits.GIEL = 1);
+[e = . . _INTCON0bits 0 5 -> -> 1 `i `uc ]
+"107
+[; ;main.c: 107:     while (1)
+[e :U 3208 ]
+"108
+[; ;main.c: 108:     {
+{
+"110
+[; ;main.c: 110:     }
+}
+[e :U 3207 ]
+[e $U 3208  ]
+[e :U 3209 ]
+"111
+[; ;main.c: 111: }
+[e :UE 3206 ]
 }

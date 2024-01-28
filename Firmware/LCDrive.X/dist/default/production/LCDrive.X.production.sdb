@@ -27,22 +27,34 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.40\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"49 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\main.c
+"46 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\main.c
+[v _TMR0_stepISR TMR0_stepISR `(v  1 e 1 0 ]
+"66
 [v _main main `(v  1 e 1 0 ]
 "59 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/dma1.c
 [v _DMA1_Initialize DMA1_Initialize `(v  1 e 1 0 ]
+"52 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+"76
+[v _Default_ISR Default_ISR `IIH(v  1 e 1 0 ]
 "50 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
-"60
+"61
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
-"78
+"79
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
-"99
+"100
 [v _SystemArbiter_Initialize SystemArbiter_Initialize `(v  1 e 1 0 ]
 "55 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
-"60 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/tmr0.c
+"62 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
+"122
+[v _TMR0_ISR TMR0_ISR `IIH(v  1 e 1 0 ]
+"135
+[v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
+"139
+[v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
 "55 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X/mcc_generated_files/dma1.h
 [v _SrcVarName0 SrcVarName0 `[8]uc  1 e 8 0 ]
 "56
@@ -53,27 +65,27 @@
 [v _TMR0H TMR0H `VEuc  1 e 1 @16311 ]
 "3922
 [v _T0CON0 T0CON0 `VEuc  1 e 1 @16312 ]
-[s S239 . 1 `uc 1 OUTPS 1 0 :4:0 
+[s S295 . 1 `uc 1 OUTPS 1 0 :4:0 
 `uc 1 MD16 1 0 :1:4 
 `uc 1 OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 EN 1 0 :1:7 
 ]
 "3950
-[s S245 . 1 `uc 1 T0OUTPS 1 0 :4:0 
+[s S301 . 1 `uc 1 T0OUTPS 1 0 :4:0 
 `uc 1 T0MD16 1 0 :1:4 
 `uc 1 T0OUT 1 0 :1:5 
 `uc 1 . 1 0 :1:6 
 `uc 1 T0EN 1 0 :1:7 
 ]
-[s S251 . 1 `uc 1 OUTPS0 1 0 :1:0 
+[s S307 . 1 `uc 1 OUTPS0 1 0 :1:0 
 `uc 1 OUTPS1 1 0 :1:1 
 `uc 1 OUTPS2 1 0 :1:2 
 `uc 1 OUTPS3 1 0 :1:3 
 `uc 1 T016BIT 1 0 :1:4 
 ]
-[u S257 . 1 `S239 1 . 1 0 `S245 1 . 1 0 `S251 1 . 1 0 ]
-[v _T0CON0bits T0CON0bits `VES257  1 e 1 @16312 ]
+[u S313 . 1 `S295 1 . 1 0 `S301 1 . 1 0 `S307 1 . 1 0 ]
+[v _T0CON0bits T0CON0bits `VES313  1 e 1 @16312 ]
 "4020
 [v _T0CON1 T0CON1 `VEuc  1 e 1 @16313 ]
 "4162
@@ -90,8 +102,54 @@
 [v _TRISC TRISC `VEuc  1 e 1 @16324 ]
 "4839
 [v _PORTC PORTC `VEuc  1 e 1 @16332 ]
+[s S458 . 1 `uc 1 INT0EDG 1 0 :1:0 
+`uc 1 INT1EDG 1 0 :1:1 
+`uc 1 INT2EDG 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 IPEN 1 0 :1:5 
+`uc 1 GIEL 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"4984
+[s S466 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 GIEH 1 0 :1:7 
+]
+[u S469 . 1 `S458 1 . 1 0 `S466 1 . 1 0 ]
+[v _INTCON0bits INTCON0bits `VES469  1 e 1 @16338 ]
+"5060
+[v _IVTLOCK IVTLOCK `VEuc  1 e 1 @16340 ]
+[s S486 . 1 `uc 1 IVTLOCKED 1 0 :1:0 
+]
+"5070
+[u S488 . 1 `S486 1 . 1 0 ]
+[v _IVTLOCKbits IVTLOCKbits `VES488  1 e 1 @16340 ]
+"5089
+[v _IVTBASEL IVTBASEL `VEuc  1 e 1 @16341 ]
+"5151
+[v _IVTBASEH IVTBASEH `VEuc  1 e 1 @16342 ]
+"5213
+[v _IVTBASEU IVTBASEU `VEuc  1 e 1 @16343 ]
+"11618
+[v _GIE GIE `VEb  1 e 0 @130711 ]
 "14147
 [v _PLLR PLLR `VEb  1 e 0 @118496 ]
+[s S496 . 1 `uc 1 I2C1TXIP 1 0 :1:0 
+`uc 1 I2C1IP 1 0 :1:1 
+`uc 1 I2C1EIP 1 0 :1:2 
+`uc 1 U1RXIP 1 0 :1:3 
+`uc 1 U1TXIP 1 0 :1:4 
+`uc 1 U1EIP 1 0 :1:5 
+`uc 1 U1IP 1 0 :1:6 
+`uc 1 TMR0IP 1 0 :1:7 
+]
+"24663
+[s S505 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIP 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TXBNIP 1 0 :1:4 
+]
+[u S510 . 1 `S496 1 . 1 0 `S505 1 . 1 0 ]
+[v _IPR3bits IPR3bits `VES510  1 e 1 @14723 ]
 [s S59 . 1 `uc 1 DMA1SCNTIE 1 0 :1:0 
 `uc 1 DMA1DCNTIE 1 0 :1:1 
 `uc 1 DMA1ORIE 1 0 :1:2 
@@ -107,6 +165,29 @@
 ]
 [u S71 . 1 `S59 1 . 1 0 `S68 1 . 1 0 ]
 [v _PIE2bits PIE2bits `VES71  1 e 1 @14738 ]
+[s S239 . 1 `uc 1 I2C1TXIE 1 0 :1:0 
+`uc 1 I2C1IE 1 0 :1:1 
+`uc 1 I2C1EIE 1 0 :1:2 
+`uc 1 U1RXIE 1 0 :1:3 
+`uc 1 U1TXIE 1 0 :1:4 
+`uc 1 U1EIE 1 0 :1:5 
+`uc 1 U1IE 1 0 :1:6 
+`uc 1 TMR0IE 1 0 :1:7 
+]
+"25404
+[s S248 . 1 `uc 1 RXB0IE 1 0 :1:0 
+`uc 1 RXB1IE 1 0 :1:1 
+`uc 1 TXB0IE 1 0 :1:2 
+`uc 1 TXB1IE 1 0 :1:3 
+`uc 1 TXB2IE 1 0 :1:4 
+]
+[s S254 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RXBNIE 1 0 :1:1 
+`uc 1 . 1 0 :2:2 
+`uc 1 TXBNIE 1 0 :1:4 
+]
+[u S259 . 1 `S239 1 . 1 0 `S248 1 . 1 0 `S254 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES259  1 e 1 @14739 ]
 [s S31 . 1 `uc 1 DMA1SCNTIF 1 0 :1:0 
 `uc 1 DMA1DCNTIF 1 0 :1:1 
 `uc 1 DMA1ORIF 1 0 :1:2 
@@ -122,7 +203,7 @@
 ]
 [u S43 . 1 `S31 1 . 1 0 `S40 1 . 1 0 ]
 [v _PIR2bits PIR2bits `VES43  1 e 1 @14754 ]
-[s S206 . 1 `uc 1 I2C1TXIF 1 0 :1:0 
+[s S207 . 1 `uc 1 I2C1TXIF 1 0 :1:0 
 `uc 1 I2C1IF 1 0 :1:1 
 `uc 1 I2C1EIF 1 0 :1:2 
 `uc 1 U1RXIF 1 0 :1:3 
@@ -132,13 +213,13 @@
 `uc 1 TMR0IF 1 0 :1:7 
 ]
 "26128
-[s S215 . 1 `uc 1 . 1 0 :1:0 
+[s S216 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RXBNIF 1 0 :1:1 
 `uc 1 . 1 0 :2:2 
 `uc 1 TXBNIF 1 0 :1:4 
 ]
-[u S220 . 1 `S206 1 . 1 0 `S215 1 . 1 0 ]
-[v _PIR3bits PIR3bits `VES220  1 e 1 @14755 ]
+[u S221 . 1 `S207 1 . 1 0 `S216 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES221  1 e 1 @14755 ]
 "26578
 [v _PMD0 PMD0 `VEuc  1 e 1 @14784 ]
 "26655
@@ -263,43 +344,80 @@
 [v _DMA1AIRQ DMA1AIRQ `VEuc  1 e 1 @15358 ]
 "37682
 [v _DMA1SIRQ DMA1SIRQ `VEuc  1 e 1 @15359 ]
-"49 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\main.c
+"60 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/tmr0.c
+[v _TMR0_InterruptHandler TMR0_InterruptHandler `*.37(v  1 e 2 0 ]
+"66 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"78
+"111
 } 0
 "50 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/mcc.c
 [v _SYSTEM_Initialize SYSTEM_Initialize `(v  1 e 1 0 ]
 {
-"58
+"59
 } 0
-"60 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/tmr0.c
+"62 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/tmr0.c
 [v _TMR0_Initialize TMR0_Initialize `(v  1 e 1 0 ]
 {
-"78
+"86
 } 0
-"99 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/mcc.c
+"135
+[v _TMR0_SetInterruptHandler TMR0_SetInterruptHandler `(v  1 e 1 0 ]
+{
+[v TMR0_SetInterruptHandler@InterruptHandler InterruptHandler `*.37(v  1 p 2 2 ]
+"137
+} 0
+"100 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/mcc.c
 [v _SystemArbiter_Initialize SystemArbiter_Initialize `(v  1 e 1 0 ]
 {
-"105
+"106
 } 0
-"78
+"79
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
 {
-"96
+"97
 } 0
 "55 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 {
 "114
 } 0
-"60 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/mcc.c
+"61 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/mcc.c
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 {
-"76
+"77
+} 0
+"52 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/interrupt_manager.c
+[v _INTERRUPT_Initialize INTERRUPT_Initialize `(v  1 e 1 0 ]
+{
+"56
+[v INTERRUPT_Initialize@state state `a  1 a 1 2 ]
+"74
 } 0
 "59 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/dma1.c
 [v _DMA1_Initialize DMA1_Initialize `(v  1 e 1 0 ]
 {
 "93
+} 0
+"122 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/tmr0.c
+[v _TMR0_ISR TMR0_ISR `IIH(v  1 e 1 0 ]
+{
+"132
+} 0
+"139
+[v _TMR0_DefaultInterruptHandler TMR0_DefaultInterruptHandler `(v  1 e 1 0 ]
+{
+"142
+} 0
+"46 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\main.c
+[v _TMR0_stepISR TMR0_stepISR `(v  1 e 1 0 ]
+{
+"48
+[v TMR0_stepISR@step step `us  1 s 2 step ]
+"61
+} 0
+"76 C:\Users\Fedor\Documents\GitHub\LCDrive\Firmware\LCDrive.X\mcc_generated_files/interrupt_manager.c
+[v _Default_ISR Default_ISR `IIH(v  1 e 1 0 ]
+{
+"78
 } 0

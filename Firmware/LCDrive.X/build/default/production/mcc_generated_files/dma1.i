@@ -36527,7 +36527,7 @@ void DMA1_Initialize(void)
 
     DMA1SSZ = 8;
 
-    DMA1DSZ = 2;
+    DMA1DSZ = 1;
 
     DMA1SIRQ = 0x1F;
 

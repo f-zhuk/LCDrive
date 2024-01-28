@@ -36413,8 +36413,6 @@ unsigned char __t3rd16on(void);
 # 1 "./mcc_generated_files/pin_manager.h" 1
 # 158 "./mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 170 "./mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_IOC(void);
 # 51 "./mcc_generated_files/mcc.h" 2
 
 
@@ -36575,6 +36573,11 @@ char *tempnam(const char *, const char *);
 # 7 "C:\\Program Files\\Microchip\\xc8\\v2.40\\pic\\include\\c99\\conio.h" 2 3
 # 54 "./mcc_generated_files/mcc.h" 2
 
+# 1 "./mcc_generated_files/interrupt_manager.h" 1
+# 109 "./mcc_generated_files/interrupt_manager.h"
+void INTERRUPT_Initialize (void);
+# 55 "./mcc_generated_files/mcc.h" 2
+
 # 1 "./mcc_generated_files/dma1.h" 1
 # 55 "./mcc_generated_files/dma1.h"
 uint8_t SrcVarName0[8];
@@ -36678,7 +36681,7 @@ void DMA1_StopTransfer(void);
 
 
 void DMA1_SetDMAPriority(uint8_t priority);
-# 55 "./mcc_generated_files/mcc.h" 2
+# 56 "./mcc_generated_files/mcc.h" 2
 
 # 1 "./mcc_generated_files/tmr0.h" 1
 # 100 "./mcc_generated_files/tmr0.h"
@@ -36693,19 +36696,40 @@ uint8_t TMR0_ReadTimer(void);
 void TMR0_WriteTimer(uint8_t timerVal);
 # 272 "./mcc_generated_files/tmr0.h"
 void TMR0_Reload(uint8_t periodVal);
-# 308 "./mcc_generated_files/tmr0.h"
-_Bool TMR0_HasOverflowOccured(void);
-# 56 "./mcc_generated_files/mcc.h" 2
-# 71 "./mcc_generated_files/mcc.h"
+# 293 "./mcc_generated_files/tmr0.h"
+ void TMR0_SetInterruptHandler(void (* InterruptHandler)(void));
+# 311 "./mcc_generated_files/tmr0.h"
+extern void (*TMR0_InterruptHandler)(void);
+# 329 "./mcc_generated_files/tmr0.h"
+void TMR0_DefaultInterruptHandler(void);
+# 57 "./mcc_generated_files/mcc.h" 2
+# 72 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 84 "./mcc_generated_files/mcc.h"
+# 85 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 97 "./mcc_generated_files/mcc.h"
+# 98 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 109 "./mcc_generated_files/mcc.h"
+# 110 "./mcc_generated_files/mcc.h"
 void SystemArbiter_Initialize(void);
 # 44 "main.c" 2
 
+
+void TMR0_stepISR()
+{
+    static uint16_t step = 0;
+    step ++;
+    if(step == 3500)
+    {
+        DMA1CON1 = (DMA1CON1&~0x06)|0x04;
+        DMA1SSA = (&SrcVarName0)+8;
+    }
+    if(step > 7000)
+    {
+        step = 0;
+        DMA1CON1 = (DMA1CON1&~0x06)|0x02;
+        DMA1SSA = &SrcVarName0;
+    }
+}
 
 
 
@@ -36714,16 +36738,35 @@ void main(void)
 {
 
     SYSTEM_Initialize();
-# 64 "main.c"
-    SrcVarName0[0] = 0x0A;
-    SrcVarName0[1] = 0x06;
-    SrcVarName0[2] = 0x05;
-    SrcVarName0[3] = 0x09;
-    SrcVarName0[4] = 0x0A;
-    SrcVarName0[5] = 0x06;
-    SrcVarName0[6] = 0x05;
-    SrcVarName0[7] = 0x09;
+
+    TMR0_SetInterruptHandler (TMR0_stepISR);
+
+    SrcVarName0[0] = 0x09;
+    SrcVarName0[1] = 0x0C;
+    SrcVarName0[2] = 0x06;
+    SrcVarName0[3] = 0x03;
+    SrcVarName0[4] = 0x09;
+    SrcVarName0[5] = 0x0C;
+    SrcVarName0[6] = 0x06;
+    SrcVarName0[7] = 0x03;
+# 89 "main.c"
     DMA1DSA= (volatile unsigned short)&PORTC;
+
+
+
+
+
+
+    (INTCON0bits.GIEH = 1);
+
+
+    (INTCON0bits.GIEL = 1);
+
+
+
+
+
+
 
     while (1)
     {
