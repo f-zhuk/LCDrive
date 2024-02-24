@@ -11,7 +11,9 @@ Now let’s add the carriage. All cutouts have a width equal to pin's diameter. 
 
 Pin and carriage respectively are pushed along the axis with the motors rotation.
 
-In total one full rotation gives 2π (6.28) millimeters of travel or 10 mm of useful travel corresponds to 1.59 revolutions. In full step mode it takes 32 steps for one revolution of the internal shaft and 64*63.68395~4076 steps for the main shaft. This means that ideally it takes around 6487 steps to cover the whole 10 mm range or in other words, it is 1.54 micron movement per step in an ideal world.
+In full-step mode, it takes 32 steps for one revolution of the internal shaft, 63.68 turns of the internal shaft for the single main shaft revolution, and 1.59 main shaft revolutions to slide the carriage from start to finish, or 3240 steps in total. 
+
+In the ideal world, it is approximately 3.1 micrometers of linear movement per step.
 
 Since I am not satisfied with current situation with parametric curves and offset tools in FreeCAD I wrote a small Python script to generate SVGs for import. Extruded pads I have prototyped with FDM which took me a couple of iterations. Then I milled my parts with a 1mm endmill out of 2mm aluminum strip. Using FreeCAD as a CAM has its drawbacks and at this point I think it might be reasonable to generate G-code in the same Python script skipping the FreeCAD part.
 
